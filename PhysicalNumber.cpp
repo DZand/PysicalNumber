@@ -11,8 +11,8 @@ PhysicalNumber ariel::operator++(PhysicalNumber &a) {
     return PhysicalNumber(0, Unit::KM);
 }
 
-PhysicalNumber ariel::operator+=(PhysicalNumber &b) {
-    return PhysicalNumber(0, Unit::CM);
+PhysicalNumber ariel::operator+=(PhysicalNumber &a, PhysicalNumber &b) {
+    return b;
 }
 
 PhysicalNumber ariel::operator+(const PhysicalNumber &a, const PhysicalNumber &b) {
@@ -27,8 +27,8 @@ PhysicalNumber ariel::operator--(PhysicalNumber &a) {
     return PhysicalNumber(0, Unit::KM);
 }
 
-PhysicalNumber ariel::operator-=(PhysicalNumber &b) {
-    return PhysicalNumber(0, Unit::CM);
+PhysicalNumber ariel::operator-=(PhysicalNumber &a, PhysicalNumber &b) {
+    return b;
 }
 
 PhysicalNumber ariel::operator-(const PhysicalNumber &a, const PhysicalNumber &b) {
@@ -59,16 +59,24 @@ bool ariel::operator!=(const PhysicalNumber &a, const PhysicalNumber &b) {
     return false;
 }
 
+
+
 bool ariel::operator==(const PhysicalNumber &a, const PhysicalNumber &b) {
     return false;
 }
 
+istream &ariel::operator>>(istream &in, PhysicalNumber &a) {
+    return in;
+}
 
+ostream& ariel::operator<< (ostream &os,const PhysicalNumber& num){
+    return os;
+}
 
-/*int main(){
+int main(){
     PhysicalNumber a(2, Unit::TON);
     cout<<a.GetData()<<" "<<a.GetUnit() <<endl;
     a.SetUnit(Unit::CM);
     cout<<a.GetData()<<" "<<a.GetUnit() <<endl;
     return 0;
-}*/
+}
