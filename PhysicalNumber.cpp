@@ -5,19 +5,21 @@
 #include <cstdlib>
 #include "PhysicalNumber.h"
 using namespace std;
-using namespace ariel;
+using ariel::PhysicalNumber;
+
+PhysicalNumber::PhysicalNumber(double num , Unit type)
+        :data(num), unitType(type){}
 
 PhysicalNumber ariel::operator++(PhysicalNumber &a) {
     return PhysicalNumber(0, Unit::KM);
 }
 
-PhysicalNumber ariel::operator+=(PhysicalNumber &a, PhysicalNumber &b) {
+PhysicalNumber& ariel::operator+=(PhysicalNumber &a, PhysicalNumber &b) {
+
     return b;
 }
 
-PhysicalNumber ariel::operator+(const PhysicalNumber &a, const PhysicalNumber &b) {
-    return PhysicalNumber(0, Unit::KM);
-}
+
 
 PhysicalNumber ariel::operator+(const PhysicalNumber &a) {
     return PhysicalNumber(0, Unit::KM);
@@ -73,10 +75,3 @@ ostream& ariel::operator<< (ostream &os,const PhysicalNumber& num){
     return os;
 }
 
-int main(){
-    PhysicalNumber a(2, Unit::TON);
-    cout<<a.GetData()<<" "<<a.GetUnit() <<endl;
-    a.SetUnit(Unit::CM);
-    cout<<a.GetData()<<" "<<a.GetUnit() <<endl;
-    return 0;
-}
