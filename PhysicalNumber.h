@@ -37,13 +37,13 @@ namespace ariel{
             }
         //positive Operators:
         friend PhysicalNumber operator++(PhysicalNumber& a);
-        friend PhysicalNumber operator+=(PhysicalNumber& a, PhysicalNumber& b);
+        friend PhysicalNumber operator+=(PhysicalNumber&a, PhysicalNumber& b);
         friend PhysicalNumber operator+ (const PhysicalNumber& a, const PhysicalNumber& b);
         friend PhysicalNumber operator+ (const PhysicalNumber& a);
 
         //negative Operators:
         friend PhysicalNumber operator--(PhysicalNumber& a);
-        friend PhysicalNumber operator-=(PhysicalNumber& a, PhysicalNumber& b);
+        friend PhysicalNumber operator-=(PhysicalNumber& a,PhysicalNumber& b);
         friend PhysicalNumber operator- (const PhysicalNumber& a, const PhysicalNumber& b);
         friend PhysicalNumber operator- (const PhysicalNumber& a);
 
