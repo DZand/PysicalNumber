@@ -56,7 +56,7 @@ namespace ariel{
         friend bool operator==(const PhysicalNumber& a,const PhysicalNumber& b);
 
         //I/O Stream Operators:
-        friend istream& operator>>(istream& in, PhysicalNumber& a);
-        friend ostream& operator<<(ostream& out,const PhysicalNumber& a);
+        friend istream& operator>>(istream &in, PhysicalNumber& a);
+        friend ostream& operator<<(ostream &os,const PhysicalNumber& a);
     };
 }
