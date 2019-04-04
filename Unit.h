@@ -1,11 +1,7 @@
 //
 // Created by peleg on 04-Apr-19.
 //
-
-#ifndef PELEGO_UNIT_H
-#define PELEGO_UNIT_H
-
-#endif //PELEGO_UNIT_H
+#pragma once
 
 namespace ariel{
  class Unit{
