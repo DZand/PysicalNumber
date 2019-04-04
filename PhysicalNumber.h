@@ -7,29 +7,20 @@ using namespace std;
 namespace ariel{
     class PhysicalNumber{
         private:
-        int data;
-        Unit::unit unitType;
+
+
+        PhysicalNumber(double num, Unit type);
+
+        double data;
+        Unit unitType;
 
         public:
-            PhysicalNumber(int num , Unit::unit type)
-            :data(num), unitType(type){}
-            string GetUnit(){
-                switch (unitType) {
-                    case 0:return "CM";
-                    case 1:return "M";
-                    case 2:return "KM";
-                    case 3:return "SEC";
-                    case 4:return "MIN";
-                    case 5:return "HOUR";
-                    case 6:return "G";
-                    case 7:return "KG";
-                    case 8:return "TON";
-                }
-            }
+            PhysicalNumber(int num , Unit type);
+
             int GetData(){
                 return data;
             }
-            void SetData(int numb){
+            void SetData(double numb){
                 this->data=numb;
             }
             void SetUnit(Unit::unit(mida)){
@@ -37,8 +28,8 @@ namespace ariel{
             }
         //positive Operators:
         friend PhysicalNumber operator++(PhysicalNumber& a);
-        friend PhysicalNumber operator+=(PhysicalNumber&a, PhysicalNumber& b);
-        friend PhysicalNumber operator+ (const PhysicalNumber& a, const PhysicalNumber& b);
+        friend PhysicalNumber& operator+=(PhysicalNumber& a ,PhysicalNumber& b);
+        //friend PhysicalNumber operator+ (PhysicalNumber const &b);
         friend PhysicalNumber operator+ (const PhysicalNumber& a);
 
         //negative Operators:
@@ -56,7 +47,7 @@ namespace ariel{
         friend bool operator==(const PhysicalNumber& a,const PhysicalNumber& b);
 
         //I/O Stream Operators:
-        friend istream& operator>>(istream &in, PhysicalNumber& a);
-        friend ostream& operator<<(ostream &os,const PhysicalNumber& a);
+        friend istream& operator>>(istream& in, PhysicalNumber& a);
+        friend ostream& operator<<(ostream& out,const PhysicalNumber& a);
     };
-}
+};
