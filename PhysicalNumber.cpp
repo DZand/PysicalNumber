@@ -65,10 +65,10 @@ bool ariel::operator==(const PhysicalNumber &a, const PhysicalNumber &b) {
 
 
 
-int main(){
+/*int main(){
     PhysicalNumber a(2, Unit::TON);
     cout<<a.GetData()<<" "<<a.GetUnit() <<endl;
     a.SetUnit(Unit::CM);
     cout<<a.GetData()<<" "<<a.GetUnit() <<endl;
     return 0;
-}
+}*/
