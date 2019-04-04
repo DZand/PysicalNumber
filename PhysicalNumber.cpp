@@ -11,8 +11,8 @@ PhysicalNumber ariel::operator++(PhysicalNumber &a) {
     return PhysicalNumber(0, Unit::KM);
 }
 
-PhysicalNumber ariel::operator+=(PhysicalNumber &a, PhysicalNumber &b) {
-    return PhysicalNumber(0, Unit::KM);
+PhysicalNumber ariel::operator+=(PhysicalNumber &b) {
+    return PhysicalNumber(0, Unit::CM);
 }
 
 PhysicalNumber ariel::operator+(const PhysicalNumber &a, const PhysicalNumber &b) {
@@ -27,8 +27,8 @@ PhysicalNumber ariel::operator--(PhysicalNumber &a) {
     return PhysicalNumber(0, Unit::KM);
 }
 
-PhysicalNumber ariel::operator-=(PhysicalNumber &a, PhysicalNumber &b) {
-    return PhysicalNumber(0, Unit::KM);
+PhysicalNumber ariel::operator-=(PhysicalNumber &b) {
+    return PhysicalNumber(0, Unit::CM);
 }
 
 PhysicalNumber ariel::operator-(const PhysicalNumber &a, const PhysicalNumber &b) {
@@ -62,6 +62,8 @@ bool ariel::operator!=(const PhysicalNumber &a, const PhysicalNumber &b) {
 bool ariel::operator==(const PhysicalNumber &a, const PhysicalNumber &b) {
     return false;
 }
+
+
 
 int main(){
     PhysicalNumber a(2, Unit::TON);
