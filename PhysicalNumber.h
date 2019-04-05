@@ -1,53 +1,72 @@
 //
-// Created by peleg on 04-Apr-19.
+// Created by Peleg on 05/04/2019.
 //
-#include <stdio.h>
+#pragma once
 #include "Unit.h"
-using namespace std;
-namespace ariel{
+#include <iostream>
+namespace ariel {
     class PhysicalNumber{
         private:
-
-
-        PhysicalNumber(double num, Unit type);
-
-        double data;
-        Unit unitType;
-
+            double data;
+            Unit unit;
         public:
-            PhysicalNumber(int num , Unit type);
+            //constructor with initializing list
+            PhysicalNumber(double num, Unit type):data(num), unit(type){
+                if(type>=0 && type<=2){
+                    //should be switch cases better code
+                }else if(type>=3 && type<=5){
 
-            int GetData(){
-                return data;
+                }else if(type>=6 && type<=8){
+
+                }else{
+                    throw std::invalid_argument( "received wrong value" );
+                }
             }
-            void SetData(double numb){
-                this->data=numb;
+            std::string GetUnit(){
+                int temp = this->unit;
+                switch (temp){
+                    case 0: return "cm";
+                    case 1: return "m";
+                    case 2: return "km";
+                    case 3: return "sec";
+                    case 4: return "min";
+                    case 5: return "hour";
+                    case 6: return "g";
+                    case 7: return "kg";
+                    case 8: return "ton";
+                    case 9: return "bad";
+                }
             }
-            void SetUnit(Unit::unit(mida)){
-                this->unitType=mida;
+            void SetUnit(Unit un){
+                this->unit = un;
             }
-        //positive Operators:
-        friend PhysicalNumber operator++(PhysicalNumber& a);
-        friend PhysicalNumber& operator+=(PhysicalNumber& a ,PhysicalNumber& b);
-        //friend PhysicalNumber operator+ (PhysicalNumber const &b);
-        friend PhysicalNumber operator+ (const PhysicalNumber& a);
 
-        //negative Operators:
-        friend PhysicalNumber operator--(PhysicalNumber& a);
-        friend PhysicalNumber operator-=(PhysicalNumber& a,PhysicalNumber& b);
-        friend PhysicalNumber operator- (const PhysicalNumber& a, const PhysicalNumber& b);
-        friend PhysicalNumber operator- (const PhysicalNumber& a);
+            //Positive
+            friend PhysicalNumber operator+(PhysicalNumber& a,PhysicalNumber& b);
+            friend PhysicalNumber operator+=(PhysicalNumber& number, PhysicalNumber& other);
+            friend PhysicalNumber operator+(const PhysicalNumber& a);//const cuz no change made in a
+            //negative
+            friend PhysicalNumber operator-(PhysicalNumber& a, PhysicalNumber& b);
+            friend PhysicalNumber operator-=(PhysicalNumber& number, PhysicalNumber& other);
+            friend PhysicalNumber operator-(PhysicalNumber& a);//not const cuz we do need to change number
+            //comparison
+            friend bool operator== (const PhysicalNumber& a,const PhysicalNumber& b);
+            friend bool operator>= (const PhysicalNumber& a,const PhysicalNumber& b);
+            friend bool operator<= (const PhysicalNumber& a,const PhysicalNumber& b);
+            friend bool operator> (const PhysicalNumber& a,const PhysicalNumber& b);
+            friend bool operator< (const PhysicalNumber& a,const PhysicalNumber& b);
+            friend bool operator!= (const PhysicalNumber& a,const PhysicalNumber& b);
+            //++,--
+            friend PhysicalNumber operator++(PhysicalNumber& a, int); //num++
+            friend PhysicalNumber operator++(PhysicalNumber& a);//++num
+            //input output
+            friend std::istream& operator>>(std::istream& in, PhysicalNumber& a);
+            friend std::ostream&operator<<(std::ostream& out, PhysicalNumber& a);
 
-        //Compare Operators:
-        friend bool operator<(const PhysicalNumber& a,const PhysicalNumber& b);
-        friend bool operator<=(const PhysicalNumber& a,const PhysicalNumber& b);
-        friend bool operator>(const PhysicalNumber& a,const PhysicalNumber& b);
-        friend bool operator>=(const PhysicalNumber& a,const PhysicalNumber& b);
-        friend bool operator!=(const PhysicalNumber& a,const PhysicalNumber& b);
-        friend bool operator==(const PhysicalNumber& a,const PhysicalNumber& b);
+            void Display(){
+                std::cout<< this->data << " "<< this->GetUnit();
+            }
 
-        //I/O Stream Operators:
-        friend istream& operator>>(istream& in, PhysicalNumber& a);
-        friend ostream& operator<<(ostream& out,const PhysicalNumber& a);
+
     };
-};
+}
