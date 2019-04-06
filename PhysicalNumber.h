@@ -4,6 +4,8 @@
 #pragma once
 #include "Unit.h"
 #include <iostream>
+using namespace std;
+
 namespace ariel {
     class PhysicalNumber{
         private:
@@ -36,15 +38,16 @@ namespace ariel {
                     case 8: return "ton";
                     case 9: return "bad";
                 }
+                return "";
             }
             void SetUnit(Unit un){
                 this->unit = un;
             }
 
             //Positive
-            friend PhysicalNumber operator+(PhysicalNumber& a,PhysicalNumber& b);
-            friend PhysicalNumber operator+=(PhysicalNumber& number, PhysicalNumber& other);
-            friend PhysicalNumber operator+(const PhysicalNumber& a);//const cuz no change made in a
+            friend PhysicalNumber operator+(PhysicalNumber& a,const PhysicalNumber& b);
+            friend PhysicalNumber operator+=(PhysicalNumber& g,const PhysicalNumber& other);
+            friend PhysicalNumber operator+( PhysicalNumber& a);//const cuz no change made in a
             //negative
             friend PhysicalNumber operator-(PhysicalNumber& a, PhysicalNumber& b);
             friend PhysicalNumber operator-=(PhysicalNumber& number, PhysicalNumber& other);
@@ -60,12 +63,9 @@ namespace ariel {
             friend PhysicalNumber operator++(PhysicalNumber& a, int); //num++
             friend PhysicalNumber operator++(PhysicalNumber& a);//++num
             //input output
-            friend std::istream& operator>>(std::istream& in, PhysicalNumber& a);
-            friend std::ostream&operator<<(std::ostream& out, PhysicalNumber& a);
+            friend istream& operator>> (istream& in, ariel::PhysicalNumber& a);
+            friend ostream& operator<<(ostream& out,const ariel::PhysicalNumber& a);
 
-            void Display(){
-                std::cout<< this->data << " "<< this->GetUnit();
-            }
 
 
     };
