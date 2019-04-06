@@ -24,6 +24,9 @@ namespace ariel {
                     throw std::invalid_argument( "received wrong value" );
                 }
             }
+            double GetData(){
+                return this->data;
+            }
             std::string GetUnit(){
                 int temp = this->unit;
                 switch (temp){
@@ -45,13 +48,26 @@ namespace ariel {
             }
 
             //Positive
-            friend PhysicalNumber operator+(PhysicalNumber& a,const PhysicalNumber& b);
-            friend PhysicalNumber operator+=(PhysicalNumber& g,const PhysicalNumber& other);
-            friend PhysicalNumber operator+( PhysicalNumber& a);//const cuz no change made in a
+            ariel::PhysicalNumber operator+(const ariel::PhysicalNumber& b){
+                double t;
+                Unit u;
+                if(this->unit == b.unit && ((this->unit - b.unit)>=0 ||(this->unit - b.unit)<=2)){
+                    t = this->data + b.data;
+                    u = this->unit;
+                }else if(this->unit> b.unit&& ((this->unit - b.unit)>=0 ||(this->unit - b.unit)<=2)){
+
+
+                }
+                ariel::PhysicalNumber g(t,u);
+                return g;
+            }
+            friend ariel::PhysicalNumber& operator+=(PhysicalNumber& b,const ariel::PhysicalNumber& a);
+
             //negative
             friend PhysicalNumber operator-(PhysicalNumber& a, PhysicalNumber& b);
             friend PhysicalNumber operator-=(PhysicalNumber& number, PhysicalNumber& other);
             friend PhysicalNumber operator-(PhysicalNumber& a);//not const cuz we do need to change number
+
             //comparison
             friend bool operator== (const PhysicalNumber& a,const PhysicalNumber& b);
             friend bool operator>= (const PhysicalNumber& a,const PhysicalNumber& b);
@@ -59,14 +75,13 @@ namespace ariel {
             friend bool operator> (const PhysicalNumber& a,const PhysicalNumber& b);
             friend bool operator< (const PhysicalNumber& a,const PhysicalNumber& b);
             friend bool operator!= (const PhysicalNumber& a,const PhysicalNumber& b);
+
             //++,--
             friend PhysicalNumber operator++(PhysicalNumber& a, int); //num++
             friend PhysicalNumber operator++(PhysicalNumber& a);//++num
+
             //input output
             friend istream& operator>> (istream& in, ariel::PhysicalNumber& a);
             friend ostream& operator<<(ostream& out,const ariel::PhysicalNumber& a);
-
-
-
     };
 }
